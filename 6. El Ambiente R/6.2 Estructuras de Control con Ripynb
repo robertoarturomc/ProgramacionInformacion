@@ -1,0 +1,1933 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "kernelspec": {
+      "display_name": "R",
+      "language": "R",
+      "name": "ir"
+    },
+    "language_info": {
+      "codemirror_mode": "r",
+      "file_extension": ".r",
+      "mimetype": "text/x-r-source",
+      "name": "R",
+      "pygments_lexer": "r",
+      "version": "3.5.3"
+    },
+    "colab": {
+      "name": "6.1 Introducción a R.ipynb",
+      "provenance": []
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "jPlZbjN-44lK"
+      },
+      "source": [
+        "# 6.1. Introducción a R\n",
+        "\n",
+        "R es un lenguaje usado en Análisis de Datos, Estadística y Aprendizaje de Máquina, más popular en la Academia que Python.\n",
+        "\n",
+        "Desde hace varios años, los Analistas han debatido sobre qué lenguaje es mejor...y la respuesta correcta, es que ambos son excelentes. De hecho, podemos hacer prácticamente lo mismo con ambos, pero cada uno con sus respectivas ventajas.\n",
+        "\n",
+        "¡Recuerda! Es como un lenguaje hablado de las personas: siempre podré cantar ópera en Alemán, y regañar a alguien en Latin...pero si lo hago al revés, tendré mayor facilidad.\n",
+        "\n",
+        "¿Qué ventajas suele tener R?\n",
+        "* _Piping_.\n",
+        "* Facilidad y Capacidad de Graficación.\n",
+        "* Velocidad (a veces).\n",
+        "* Paquetes Estadísticos Especializados."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "c5s9lOM944la"
+      },
+      "source": [
+        "## Abriendo R en Google Colab"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "IxMdUutG44lc"
+      },
+      "source": [
+        "En la barra de opciones:\n",
+        "1. Entorno de ejecución.\n",
+        "2. Cambiar tipo de entorno de ejecución."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "aNHOkufe44le"
+      },
+      "source": [
+        "## Los básicos del código en R\n",
+        "### Asignar variables\n",
+        "\n",
+        "Al igual que en Python (y a diferencia de muchos otros lenguajes de programación), en R puedo asignar variables directamente, sin primero especificar el tipo de dato. \n",
+        "\n",
+        "No obstante, aquí cambia la forma en la que lo hago: tengo que ocupar una flecha (`<-`), formada por el símbolo de _menor que_, seguida de un guión. Así, el valor de la derecha es asignado al nombre de la izquierda.\n",
+        "\n",
+        "Nota 1: en caso de emergencia, ¡incluso puedo hacerlo al revés!\n",
+        "\n",
+        "Nota 2: técnicamente, también se puede usar el símbolo de igual. No obstante, para tener un código más claro (eso incluye al  _piping_, que veremos más adelante), se prefiere usar la flecha."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "93nWau7n44lg",
+        "outputId": "8be7e149-6b6a-41a9-ab4e-e45174c6c4e4"
+      },
+      "source": [
+        "a <- 3\n",
+        "a"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "3"
+            ],
+            "text/latex": [
+              "3"
+            ],
+            "text/markdown": [
+              "3"
+            ],
+            "text/plain": [
+              "[1] 3"
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "t31Lijk944lv",
+        "outputId": "a7ad9296-2557-441c-938f-75b01b1170be"
+      },
+      "source": [
+        "b <- 3.1415\n",
+        "b"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "3.1415"
+            ],
+            "text/latex": [
+              "3.1415"
+            ],
+            "text/markdown": [
+              "3.1415"
+            ],
+            "text/plain": [
+              "[1] 3.1415"
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "X85Lu29m44lx",
+        "outputId": "c5cce180-4cb4-4f80-fe42-86501c518bcf"
+      },
+      "source": [
+        "d <- \"Este es un string\"\n",
+        "d"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "'Este es un string'"
+            ],
+            "text/latex": [
+              "'Este es un string'"
+            ],
+            "text/markdown": [
+              "'Este es un string'"
+            ],
+            "text/plain": [
+              "[1] \"Este es un string\""
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "VrkM_Nda44l4",
+        "outputId": "e4a0d721-9d9b-4412-d1ef-73827cb5a2c5"
+      },
+      "source": [
+        "# ¡Ojo! Es posible, pero ALTAMENTE desalentado.\n",
+        "\"Otro string\" -> e\n",
+        "d"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "'Este es un string'"
+            ],
+            "text/latex": [
+              "'Este es un string'"
+            ],
+            "text/markdown": [
+              "'Este es un string'"
+            ],
+            "text/plain": [
+              "[1] \"Este es un string\""
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "AvSKOlGr44l8",
+        "outputId": "ee1cf172-c357-4cb4-d374-66e6585ee000"
+      },
+      "source": [
+        "f <- TRUE\n",
+        "f"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "TRUE"
+            ],
+            "text/latex": [
+              "TRUE"
+            ],
+            "text/markdown": [
+              "TRUE"
+            ],
+            "text/plain": [
+              "[1] TRUE"
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "x797iK3v44l-",
+        "outputId": "6b705c91-1f06-41d9-d9ed-c7e7f6811fa7"
+      },
+      "source": [
+        "g <- FALSE\n",
+        "g"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "FALSE"
+            ],
+            "text/latex": [
+              "FALSE"
+            ],
+            "text/markdown": [
+              "FALSE"
+            ],
+            "text/plain": [
+              "[1] FALSE"
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "p-SUz0Dz44mA",
+        "outputId": "35389078-a2aa-4b1a-e757-e3a9528664d1"
+      },
+      "source": [
+        "h <- T\n",
+        "h"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "TRUE"
+            ],
+            "text/latex": [
+              "TRUE"
+            ],
+            "text/markdown": [
+              "TRUE"
+            ],
+            "text/plain": [
+              "[1] TRUE"
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "g5IU7fxo44mC",
+        "outputId": "d4984798-bfc4-4ec7-ee20-57b4270effff"
+      },
+      "source": [
+        "i = F\n",
+        "i"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "FALSE"
+            ],
+            "text/latex": [
+              "FALSE"
+            ],
+            "text/markdown": [
+              "FALSE"
+            ],
+            "text/plain": [
+              "[1] FALSE"
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "dlAAdBH_44mD"
+      },
+      "source": [
+        "Nota: ¿alguien notó cómo me brinqué la letra _'c'_? Eso es porque, en R, la voy a usar para algo más importante...\n",
+        "\n",
+        "### Vectores en R\n",
+        "Al igual que las listas de Python, un **vector** de R puede guardar más de un elemento. \n",
+        "\n",
+        "A diferencia de las listas de Python, un vector sólo puede guardar datos de UN mismo tipo. (¿Ves cómo NumPy le copió a R?)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "rzKxkyfX44mF",
+        "outputId": "6a76765e-27fd-4aea-a185-4078928bb68d"
+      },
+      "source": [
+        "disney <- c(\"mickey\", \"minnie\", \"donald\", \"goofy\")\n",
+        "disney"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "<ol class=list-inline>\n",
+              "\t<li>'mickey'</li>\n",
+              "\t<li>'minnie'</li>\n",
+              "\t<li>'donald'</li>\n",
+              "\t<li>'goofy'</li>\n",
+              "</ol>\n"
+            ],
+            "text/latex": [
+              "\\begin{enumerate*}\n",
+              "\\item 'mickey'\n",
+              "\\item 'minnie'\n",
+              "\\item 'donald'\n",
+              "\\item 'goofy'\n",
+              "\\end{enumerate*}\n"
+            ],
+            "text/markdown": [
+              "1. 'mickey'\n",
+              "2. 'minnie'\n",
+              "3. 'donald'\n",
+              "4. 'goofy'\n",
+              "\n",
+              "\n"
+            ],
+            "text/plain": [
+              "[1] \"mickey\" \"minnie\" \"donald\" \"goofy\" "
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "7aIatlfK44mK",
+        "outputId": "ceba869b-1aa1-4382-c180-743c8fd9953e"
+      },
+      "source": [
+        "marvel <- c(\"Iron Man\", \"Black Widow\", \"Thor\")\n",
+        "marvel"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "<ol class=list-inline>\n",
+              "\t<li>'Iron Man'</li>\n",
+              "\t<li>'Black Widow'</li>\n",
+              "\t<li>'Thor'</li>\n",
+              "</ol>\n"
+            ],
+            "text/latex": [
+              "\\begin{enumerate*}\n",
+              "\\item 'Iron Man'\n",
+              "\\item 'Black Widow'\n",
+              "\\item 'Thor'\n",
+              "\\end{enumerate*}\n"
+            ],
+            "text/markdown": [
+              "1. 'Iron Man'\n",
+              "2. 'Black Widow'\n",
+              "3. 'Thor'\n",
+              "\n",
+              "\n"
+            ],
+            "text/plain": [
+              "[1] \"Iron Man\"    \"Black Widow\" \"Thor\"       "
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "OENUto6U44mM",
+        "outputId": "c6eb4483-dc18-4dc5-d63d-a3262ef1fc66"
+      },
+      "source": [
+        "numeros <- c(1, 3, 5, 7, 9, 11)\n",
+        "numeros"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "<ol class=list-inline>\n",
+              "\t<li>1</li>\n",
+              "\t<li>3</li>\n",
+              "\t<li>5</li>\n",
+              "\t<li>7</li>\n",
+              "\t<li>9</li>\n",
+              "\t<li>11</li>\n",
+              "</ol>\n"
+            ],
+            "text/latex": [
+              "\\begin{enumerate*}\n",
+              "\\item 1\n",
+              "\\item 3\n",
+              "\\item 5\n",
+              "\\item 7\n",
+              "\\item 9\n",
+              "\\item 11\n",
+              "\\end{enumerate*}\n"
+            ],
+            "text/markdown": [
+              "1. 1\n",
+              "2. 3\n",
+              "3. 5\n",
+              "4. 7\n",
+              "5. 9\n",
+              "6. 11\n",
+              "\n",
+              "\n"
+            ],
+            "text/plain": [
+              "[1]  1  3  5  7  9 11"
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "ss1GoURe44mO",
+        "outputId": "ebcdac0d-6ebf-4862-e924-1ebf6d2c3d3a"
+      },
+      "source": [
+        "vec <- c(\"tres\", \"cuatro\", 5)\n",
+        "vec"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "<ol class=list-inline>\n",
+              "\t<li>'tres'</li>\n",
+              "\t<li>'cuatro'</li>\n",
+              "\t<li>'5'</li>\n",
+              "</ol>\n"
+            ],
+            "text/latex": [
+              "\\begin{enumerate*}\n",
+              "\\item 'tres'\n",
+              "\\item 'cuatro'\n",
+              "\\item '5'\n",
+              "\\end{enumerate*}\n"
+            ],
+            "text/markdown": [
+              "1. 'tres'\n",
+              "2. 'cuatro'\n",
+              "3. '5'\n",
+              "\n",
+              "\n"
+            ],
+            "text/plain": [
+              "[1] \"tres\"   \"cuatro\" \"5\"     "
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "xesRXyTi44mP"
+      },
+      "source": [
+        "Usando mi _función_ `c()`, también puedo fusionar dos vectores."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "UIIDxq2z44mQ",
+        "outputId": "28cfca58-8537-4614-9dbe-0d210ab15215"
+      },
+      "source": [
+        "nuevo_disney <- c(disney, marvel)\n",
+        "nuevo_disney"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "<ol class=list-inline>\n",
+              "\t<li>'mickey'</li>\n",
+              "\t<li>'minnie'</li>\n",
+              "\t<li>'donald'</li>\n",
+              "\t<li>'goofy'</li>\n",
+              "\t<li>'Iron Man'</li>\n",
+              "\t<li>'Black Widow'</li>\n",
+              "\t<li>'Thor'</li>\n",
+              "</ol>\n"
+            ],
+            "text/latex": [
+              "\\begin{enumerate*}\n",
+              "\\item 'mickey'\n",
+              "\\item 'minnie'\n",
+              "\\item 'donald'\n",
+              "\\item 'goofy'\n",
+              "\\item 'Iron Man'\n",
+              "\\item 'Black Widow'\n",
+              "\\item 'Thor'\n",
+              "\\end{enumerate*}\n"
+            ],
+            "text/markdown": [
+              "1. 'mickey'\n",
+              "2. 'minnie'\n",
+              "3. 'donald'\n",
+              "4. 'goofy'\n",
+              "5. 'Iron Man'\n",
+              "6. 'Black Widow'\n",
+              "7. 'Thor'\n",
+              "\n",
+              "\n"
+            ],
+            "text/plain": [
+              "[1] \"mickey\"      \"minnie\"      \"donald\"      \"goofy\"       \"Iron Man\"   \n",
+              "[6] \"Black Widow\" \"Thor\"       "
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "Q3TpaveU44mS"
+      },
+      "source": [
+        "Al igual que en Python, puedo usar los corchetes `[]` para acceder a uno o más datos.\n",
+        "\n",
+        "A diferencia de Python, aquí sí puedo empezar a contar desde __1__."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "73I4Tb3E44mU",
+        "outputId": "fede2fb6-f6c1-415d-b6a1-aafbefce1a2e"
+      },
+      "source": [
+        "marvel[1]"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "'Iron Man'"
+            ],
+            "text/latex": [
+              "'Iron Man'"
+            ],
+            "text/markdown": [
+              "'Iron Man'"
+            ],
+            "text/plain": [
+              "[1] \"Iron Man\""
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "RRS1gGfb44mW",
+        "outputId": "2357b43f-6f68-4beb-c10a-e9486a423636"
+      },
+      "source": [
+        "marvel[0]"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [],
+            "text/latex": [],
+            "text/markdown": [],
+            "text/plain": [
+              "character(0)"
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "7Vm3x39144mX",
+        "outputId": "a27dcc92-d201-4d9d-f41e-760aff89d3fb"
+      },
+      "source": [
+        "nuevo_disney[2:5]"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "<ol class=list-inline>\n",
+              "\t<li>'minnie'</li>\n",
+              "\t<li>'donald'</li>\n",
+              "\t<li>'goofy'</li>\n",
+              "\t<li>'Iron Man'</li>\n",
+              "</ol>\n"
+            ],
+            "text/latex": [
+              "\\begin{enumerate*}\n",
+              "\\item 'minnie'\n",
+              "\\item 'donald'\n",
+              "\\item 'goofy'\n",
+              "\\item 'Iron Man'\n",
+              "\\end{enumerate*}\n"
+            ],
+            "text/markdown": [
+              "1. 'minnie'\n",
+              "2. 'donald'\n",
+              "3. 'goofy'\n",
+              "4. 'Iron Man'\n",
+              "\n",
+              "\n"
+            ],
+            "text/plain": [
+              "[1] \"minnie\"   \"donald\"   \"goofy\"    \"Iron Man\""
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "RAsQuA_E44ma"
+      },
+      "source": [
+        "En Python, usar números negativos significaba que contaba de atrás para adelante:\n",
+        "`lista[-1]` me hubiera devuelto el último valor, `lista[-2]` el penúltimo, etc.\n",
+        "\n",
+        "En R, usar números negativos significa que quiero ver todos los valores **excepto** el/los que están en negativo."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Zo38NAIO44mb",
+        "outputId": "96c18bc1-ef69-466c-cb65-024fea00c2e5"
+      },
+      "source": [
+        "marvel[-1]"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "<ol class=list-inline>\n",
+              "\t<li>'Black Widow'</li>\n",
+              "\t<li>'Thor'</li>\n",
+              "</ol>\n"
+            ],
+            "text/latex": [
+              "\\begin{enumerate*}\n",
+              "\\item 'Black Widow'\n",
+              "\\item 'Thor'\n",
+              "\\end{enumerate*}\n"
+            ],
+            "text/markdown": [
+              "1. 'Black Widow'\n",
+              "2. 'Thor'\n",
+              "\n",
+              "\n"
+            ],
+            "text/plain": [
+              "[1] \"Black Widow\" \"Thor\"       "
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "89MfO93V44mc",
+        "outputId": "2707f558-ef31-48fe-f85f-3fb15efc4643"
+      },
+      "source": [
+        "nuevo_disney[-2:-3]"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "<ol class=list-inline>\n",
+              "\t<li>'mickey'</li>\n",
+              "\t<li>'goofy'</li>\n",
+              "\t<li>'Iron Man'</li>\n",
+              "\t<li>'Black Widow'</li>\n",
+              "\t<li>'Thor'</li>\n",
+              "</ol>\n"
+            ],
+            "text/latex": [
+              "\\begin{enumerate*}\n",
+              "\\item 'mickey'\n",
+              "\\item 'goofy'\n",
+              "\\item 'Iron Man'\n",
+              "\\item 'Black Widow'\n",
+              "\\item 'Thor'\n",
+              "\\end{enumerate*}\n"
+            ],
+            "text/markdown": [
+              "1. 'mickey'\n",
+              "2. 'goofy'\n",
+              "3. 'Iron Man'\n",
+              "4. 'Black Widow'\n",
+              "5. 'Thor'\n",
+              "\n",
+              "\n"
+            ],
+            "text/plain": [
+              "[1] \"mickey\"      \"goofy\"       \"Iron Man\"    \"Black Widow\" \"Thor\"       "
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "MRwlWl8B44md"
+      },
+      "source": [
+        "### Operaciones con vectores.\n",
+        "\n",
+        "Al igual que en NumPy, se pueden realizar operaciones de forma directa en vectores de R."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "g-_sQuOQ44mf",
+        "outputId": "8dae6983-cf85-40fe-f64b-665b76af50ca"
+      },
+      "source": [
+        "numeros + 1"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "<ol class=list-inline>\n",
+              "\t<li>2</li>\n",
+              "\t<li>4</li>\n",
+              "\t<li>6</li>\n",
+              "\t<li>8</li>\n",
+              "\t<li>10</li>\n",
+              "\t<li>12</li>\n",
+              "</ol>\n"
+            ],
+            "text/latex": [
+              "\\begin{enumerate*}\n",
+              "\\item 2\n",
+              "\\item 4\n",
+              "\\item 6\n",
+              "\\item 8\n",
+              "\\item 10\n",
+              "\\item 12\n",
+              "\\end{enumerate*}\n"
+            ],
+            "text/markdown": [
+              "1. 2\n",
+              "2. 4\n",
+              "3. 6\n",
+              "4. 8\n",
+              "5. 10\n",
+              "6. 12\n",
+              "\n",
+              "\n"
+            ],
+            "text/plain": [
+              "[1]  2  4  6  8 10 12"
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "QzCyHJMg44mg",
+        "outputId": "6396c75b-ee3c-432d-e19a-fde68be7d592"
+      },
+      "source": [
+        "numeros * 3"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "<ol class=list-inline>\n",
+              "\t<li>3</li>\n",
+              "\t<li>9</li>\n",
+              "\t<li>15</li>\n",
+              "\t<li>21</li>\n",
+              "\t<li>27</li>\n",
+              "\t<li>33</li>\n",
+              "</ol>\n"
+            ],
+            "text/latex": [
+              "\\begin{enumerate*}\n",
+              "\\item 3\n",
+              "\\item 9\n",
+              "\\item 15\n",
+              "\\item 21\n",
+              "\\item 27\n",
+              "\\item 33\n",
+              "\\end{enumerate*}\n"
+            ],
+            "text/markdown": [
+              "1. 3\n",
+              "2. 9\n",
+              "3. 15\n",
+              "4. 21\n",
+              "5. 27\n",
+              "6. 33\n",
+              "\n",
+              "\n"
+            ],
+            "text/plain": [
+              "[1]  3  9 15 21 27 33"
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "3MoTdH4r44mh",
+        "outputId": "e27d3c0e-0519-45ff-e30c-df43f4dc80ce"
+      },
+      "source": [
+        "numeros ** 2"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "<ol class=list-inline>\n",
+              "\t<li>1</li>\n",
+              "\t<li>9</li>\n",
+              "\t<li>25</li>\n",
+              "\t<li>49</li>\n",
+              "\t<li>81</li>\n",
+              "\t<li>121</li>\n",
+              "</ol>\n"
+            ],
+            "text/latex": [
+              "\\begin{enumerate*}\n",
+              "\\item 1\n",
+              "\\item 9\n",
+              "\\item 25\n",
+              "\\item 49\n",
+              "\\item 81\n",
+              "\\item 121\n",
+              "\\end{enumerate*}\n"
+            ],
+            "text/markdown": [
+              "1. 1\n",
+              "2. 9\n",
+              "3. 25\n",
+              "4. 49\n",
+              "5. 81\n",
+              "6. 121\n",
+              "\n",
+              "\n"
+            ],
+            "text/plain": [
+              "[1]   1   9  25  49  81 121"
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "DLWpmyTZ44mk",
+        "outputId": "8a07e0ee-317f-469f-8ff7-2bc00f90f055"
+      },
+      "source": [
+        "numeros / 4"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "<ol class=list-inline>\n",
+              "\t<li>0.25</li>\n",
+              "\t<li>0.75</li>\n",
+              "\t<li>1.25</li>\n",
+              "\t<li>1.75</li>\n",
+              "\t<li>2.25</li>\n",
+              "\t<li>2.75</li>\n",
+              "</ol>\n"
+            ],
+            "text/latex": [
+              "\\begin{enumerate*}\n",
+              "\\item 0.25\n",
+              "\\item 0.75\n",
+              "\\item 1.25\n",
+              "\\item 1.75\n",
+              "\\item 2.25\n",
+              "\\item 2.75\n",
+              "\\end{enumerate*}\n"
+            ],
+            "text/markdown": [
+              "1. 0.25\n",
+              "2. 0.75\n",
+              "3. 1.25\n",
+              "4. 1.75\n",
+              "5. 2.25\n",
+              "6. 2.75\n",
+              "\n",
+              "\n"
+            ],
+            "text/plain": [
+              "[1] 0.25 0.75 1.25 1.75 2.25 2.75"
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "RO_EcBgn44ml",
+        "outputId": "a448a9c3-0447-4d57-fdde-48f14b14a171"
+      },
+      "source": [
+        "numeros %% 3"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "<ol class=list-inline>\n",
+              "\t<li>1</li>\n",
+              "\t<li>0</li>\n",
+              "\t<li>2</li>\n",
+              "\t<li>1</li>\n",
+              "\t<li>0</li>\n",
+              "\t<li>2</li>\n",
+              "</ol>\n"
+            ],
+            "text/latex": [
+              "\\begin{enumerate*}\n",
+              "\\item 1\n",
+              "\\item 0\n",
+              "\\item 2\n",
+              "\\item 1\n",
+              "\\item 0\n",
+              "\\item 2\n",
+              "\\end{enumerate*}\n"
+            ],
+            "text/markdown": [
+              "1. 1\n",
+              "2. 0\n",
+              "3. 2\n",
+              "4. 1\n",
+              "5. 0\n",
+              "6. 2\n",
+              "\n",
+              "\n"
+            ],
+            "text/plain": [
+              "[1] 1 0 2 1 0 2"
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "djnECcsG44mp",
+        "outputId": "add8b6c6-e4c2-4882-9dd5-f49a0a5eb0fa"
+      },
+      "source": [
+        "numeros < 4"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "<ol class=list-inline>\n",
+              "\t<li>FALSE</li>\n",
+              "\t<li>FALSE</li>\n",
+              "\t<li>TRUE</li>\n",
+              "\t<li>TRUE</li>\n",
+              "\t<li>TRUE</li>\n",
+              "\t<li>TRUE</li>\n",
+              "</ol>\n"
+            ],
+            "text/latex": [
+              "\\begin{enumerate*}\n",
+              "\\item FALSE\n",
+              "\\item FALSE\n",
+              "\\item TRUE\n",
+              "\\item TRUE\n",
+              "\\item TRUE\n",
+              "\\item TRUE\n",
+              "\\end{enumerate*}\n"
+            ],
+            "text/markdown": [
+              "1. FALSE\n",
+              "2. FALSE\n",
+              "3. TRUE\n",
+              "4. TRUE\n",
+              "5. TRUE\n",
+              "6. TRUE\n",
+              "\n",
+              "\n"
+            ],
+            "text/plain": [
+              "[1] FALSE FALSE  TRUE  TRUE  TRUE  TRUE"
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "5J1CXgkT44mr",
+        "outputId": "3356a099-cc34-46f2-9bc7-ad9622450f43"
+      },
+      "source": [
+        "(numeros >=2) & (numeros %% 3 == 0)"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "<ol class=list-inline>\n",
+              "\t<li>FALSE</li>\n",
+              "\t<li>TRUE</li>\n",
+              "\t<li>FALSE</li>\n",
+              "\t<li>FALSE</li>\n",
+              "\t<li>TRUE</li>\n",
+              "\t<li>FALSE</li>\n",
+              "</ol>\n"
+            ],
+            "text/latex": [
+              "\\begin{enumerate*}\n",
+              "\\item FALSE\n",
+              "\\item TRUE\n",
+              "\\item FALSE\n",
+              "\\item FALSE\n",
+              "\\item TRUE\n",
+              "\\item FALSE\n",
+              "\\end{enumerate*}\n"
+            ],
+            "text/markdown": [
+              "1. FALSE\n",
+              "2. TRUE\n",
+              "3. FALSE\n",
+              "4. FALSE\n",
+              "5. TRUE\n",
+              "6. FALSE\n",
+              "\n",
+              "\n"
+            ],
+            "text/plain": [
+              "[1] FALSE  TRUE FALSE FALSE  TRUE FALSE"
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "V2Pt-wGz44ms",
+        "outputId": "83a888f3-e4df-4301-86af-e99ea707e310"
+      },
+      "source": [
+        "numeros"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "<ol class=list-inline>\n",
+              "\t<li>1</li>\n",
+              "\t<li>3</li>\n",
+              "\t<li>5</li>\n",
+              "\t<li>7</li>\n",
+              "\t<li>9</li>\n",
+              "\t<li>11</li>\n",
+              "</ol>\n"
+            ],
+            "text/latex": [
+              "\\begin{enumerate*}\n",
+              "\\item 1\n",
+              "\\item 3\n",
+              "\\item 5\n",
+              "\\item 7\n",
+              "\\item 9\n",
+              "\\item 11\n",
+              "\\end{enumerate*}\n"
+            ],
+            "text/markdown": [
+              "1. 1\n",
+              "2. 3\n",
+              "3. 5\n",
+              "4. 7\n",
+              "5. 9\n",
+              "6. 11\n",
+              "\n",
+              "\n"
+            ],
+            "text/plain": [
+              "[1]  1  3  5  7  9 11"
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "p5YQF5-R44mt"
+      },
+      "source": [
+        "### Data Frames\n",
+        "Trabajar con _Data Frames_ en R es de lo más común. A diferencia de Python, que tuvo que esperarse al desarollo de las liberías _Pandas_ y _NumPy_, en R ya es posible trabajar con ellos desde la versión básica.\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "AyfISsh_44mu",
+        "outputId": "79c191a3-eb28-420a-9b4d-a071b5bddd11"
+      },
+      "source": [
+        "head(mtcars)"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "<table>\n",
+              "<caption>A data.frame: 6 × 11</caption>\n",
+              "<thead>\n",
+              "\t<tr><th></th><th scope=col>mpg</th><th scope=col>cyl</th><th scope=col>disp</th><th scope=col>hp</th><th scope=col>drat</th><th scope=col>wt</th><th scope=col>qsec</th><th scope=col>vs</th><th scope=col>am</th><th scope=col>gear</th><th scope=col>carb</th></tr>\n",
+              "\t<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>\n",
+              "</thead>\n",
+              "<tbody>\n",
+              "\t<tr><th scope=row>Mazda RX4</th><td>21.0</td><td>6</td><td>160</td><td>110</td><td>3.90</td><td>2.620</td><td>16.46</td><td>0</td><td>1</td><td>4</td><td>4</td></tr>\n",
+              "\t<tr><th scope=row>Mazda RX4 Wag</th><td>21.0</td><td>6</td><td>160</td><td>110</td><td>3.90</td><td>2.875</td><td>17.02</td><td>0</td><td>1</td><td>4</td><td>4</td></tr>\n",
+              "\t<tr><th scope=row>Datsun 710</th><td>22.8</td><td>4</td><td>108</td><td> 93</td><td>3.85</td><td>2.320</td><td>18.61</td><td>1</td><td>1</td><td>4</td><td>1</td></tr>\n",
+              "\t<tr><th scope=row>Hornet 4 Drive</th><td>21.4</td><td>6</td><td>258</td><td>110</td><td>3.08</td><td>3.215</td><td>19.44</td><td>1</td><td>0</td><td>3</td><td>1</td></tr>\n",
+              "\t<tr><th scope=row>Hornet Sportabout</th><td>18.7</td><td>8</td><td>360</td><td>175</td><td>3.15</td><td>3.440</td><td>17.02</td><td>0</td><td>0</td><td>3</td><td>2</td></tr>\n",
+              "\t<tr><th scope=row>Valiant</th><td>18.1</td><td>6</td><td>225</td><td>105</td><td>2.76</td><td>3.460</td><td>20.22</td><td>1</td><td>0</td><td>3</td><td>1</td></tr>\n",
+              "</tbody>\n",
+              "</table>\n"
+            ],
+            "text/latex": [
+              "A data.frame: 6 × 11\n",
+              "\\begin{tabular}{r|lllllllllll}\n",
+              "  & mpg & cyl & disp & hp & drat & wt & qsec & vs & am & gear & carb\\\\\n",
+              "  & <dbl> & <dbl> & <dbl> & <dbl> & <dbl> & <dbl> & <dbl> & <dbl> & <dbl> & <dbl> & <dbl>\\\\\n",
+              "\\hline\n",
+              "\tMazda RX4 & 21.0 & 6 & 160 & 110 & 3.90 & 2.620 & 16.46 & 0 & 1 & 4 & 4\\\\\n",
+              "\tMazda RX4 Wag & 21.0 & 6 & 160 & 110 & 3.90 & 2.875 & 17.02 & 0 & 1 & 4 & 4\\\\\n",
+              "\tDatsun 710 & 22.8 & 4 & 108 &  93 & 3.85 & 2.320 & 18.61 & 1 & 1 & 4 & 1\\\\\n",
+              "\tHornet 4 Drive & 21.4 & 6 & 258 & 110 & 3.08 & 3.215 & 19.44 & 1 & 0 & 3 & 1\\\\\n",
+              "\tHornet Sportabout & 18.7 & 8 & 360 & 175 & 3.15 & 3.440 & 17.02 & 0 & 0 & 3 & 2\\\\\n",
+              "\tValiant & 18.1 & 6 & 225 & 105 & 2.76 & 3.460 & 20.22 & 1 & 0 & 3 & 1\\\\\n",
+              "\\end{tabular}\n"
+            ],
+            "text/markdown": [
+              "\n",
+              "A data.frame: 6 × 11\n",
+              "\n",
+              "| <!--/--> | mpg &lt;dbl&gt; | cyl &lt;dbl&gt; | disp &lt;dbl&gt; | hp &lt;dbl&gt; | drat &lt;dbl&gt; | wt &lt;dbl&gt; | qsec &lt;dbl&gt; | vs &lt;dbl&gt; | am &lt;dbl&gt; | gear &lt;dbl&gt; | carb &lt;dbl&gt; |\n",
+              "|---|---|---|---|---|---|---|---|---|---|---|---|\n",
+              "| Mazda RX4 | 21.0 | 6 | 160 | 110 | 3.90 | 2.620 | 16.46 | 0 | 1 | 4 | 4 |\n",
+              "| Mazda RX4 Wag | 21.0 | 6 | 160 | 110 | 3.90 | 2.875 | 17.02 | 0 | 1 | 4 | 4 |\n",
+              "| Datsun 710 | 22.8 | 4 | 108 |  93 | 3.85 | 2.320 | 18.61 | 1 | 1 | 4 | 1 |\n",
+              "| Hornet 4 Drive | 21.4 | 6 | 258 | 110 | 3.08 | 3.215 | 19.44 | 1 | 0 | 3 | 1 |\n",
+              "| Hornet Sportabout | 18.7 | 8 | 360 | 175 | 3.15 | 3.440 | 17.02 | 0 | 0 | 3 | 2 |\n",
+              "| Valiant | 18.1 | 6 | 225 | 105 | 2.76 | 3.460 | 20.22 | 1 | 0 | 3 | 1 |\n",
+              "\n"
+            ],
+            "text/plain": [
+              "                  mpg  cyl disp hp  drat wt    qsec  vs am gear carb\n",
+              "Mazda RX4         21.0 6   160  110 3.90 2.620 16.46 0  1  4    4   \n",
+              "Mazda RX4 Wag     21.0 6   160  110 3.90 2.875 17.02 0  1  4    4   \n",
+              "Datsun 710        22.8 4   108   93 3.85 2.320 18.61 1  1  4    1   \n",
+              "Hornet 4 Drive    21.4 6   258  110 3.08 3.215 19.44 1  0  3    1   \n",
+              "Hornet Sportabout 18.7 8   360  175 3.15 3.440 17.02 0  0  3    2   \n",
+              "Valiant           18.1 6   225  105 2.76 3.460 20.22 1  0  3    1   "
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "1FIBy4o944mw"
+      },
+      "source": [
+        "Seleccionar datos es muy parecido a como lo haría con Python; sin embargo, acá **no** es necesario usar `.iloc` ó `.loc`."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "raCRMOpw44my",
+        "outputId": "57a4abf7-4135-4fdc-be27-2e7f41dc2caa"
+      },
+      "source": [
+        "mtcars[\"mpg\"]"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "<table>\n",
+              "<caption>A data.frame: 32 × 1</caption>\n",
+              "<thead>\n",
+              "\t<tr><th></th><th scope=col>mpg</th></tr>\n",
+              "\t<tr><th></th><th scope=col>&lt;dbl&gt;</th></tr>\n",
+              "</thead>\n",
+              "<tbody>\n",
+              "\t<tr><th scope=row>Mazda RX4</th><td>21.0</td></tr>\n",
+              "\t<tr><th scope=row>Mazda RX4 Wag</th><td>21.0</td></tr>\n",
+              "\t<tr><th scope=row>Datsun 710</th><td>22.8</td></tr>\n",
+              "\t<tr><th scope=row>Hornet 4 Drive</th><td>21.4</td></tr>\n",
+              "\t<tr><th scope=row>Hornet Sportabout</th><td>18.7</td></tr>\n",
+              "\t<tr><th scope=row>Valiant</th><td>18.1</td></tr>\n",
+              "\t<tr><th scope=row>Duster 360</th><td>14.3</td></tr>\n",
+              "\t<tr><th scope=row>Merc 240D</th><td>24.4</td></tr>\n",
+              "\t<tr><th scope=row>Merc 230</th><td>22.8</td></tr>\n",
+              "\t<tr><th scope=row>Merc 280</th><td>19.2</td></tr>\n",
+              "\t<tr><th scope=row>Merc 280C</th><td>17.8</td></tr>\n",
+              "\t<tr><th scope=row>Merc 450SE</th><td>16.4</td></tr>\n",
+              "\t<tr><th scope=row>Merc 450SL</th><td>17.3</td></tr>\n",
+              "\t<tr><th scope=row>Merc 450SLC</th><td>15.2</td></tr>\n",
+              "\t<tr><th scope=row>Cadillac Fleetwood</th><td>10.4</td></tr>\n",
+              "\t<tr><th scope=row>Lincoln Continental</th><td>10.4</td></tr>\n",
+              "\t<tr><th scope=row>Chrysler Imperial</th><td>14.7</td></tr>\n",
+              "\t<tr><th scope=row>Fiat 128</th><td>32.4</td></tr>\n",
+              "\t<tr><th scope=row>Honda Civic</th><td>30.4</td></tr>\n",
+              "\t<tr><th scope=row>Toyota Corolla</th><td>33.9</td></tr>\n",
+              "\t<tr><th scope=row>Toyota Corona</th><td>21.5</td></tr>\n",
+              "\t<tr><th scope=row>Dodge Challenger</th><td>15.5</td></tr>\n",
+              "\t<tr><th scope=row>AMC Javelin</th><td>15.2</td></tr>\n",
+              "\t<tr><th scope=row>Camaro Z28</th><td>13.3</td></tr>\n",
+              "\t<tr><th scope=row>Pontiac Firebird</th><td>19.2</td></tr>\n",
+              "\t<tr><th scope=row>Fiat X1-9</th><td>27.3</td></tr>\n",
+              "\t<tr><th scope=row>Porsche 914-2</th><td>26.0</td></tr>\n",
+              "\t<tr><th scope=row>Lotus Europa</th><td>30.4</td></tr>\n",
+              "\t<tr><th scope=row>Ford Pantera L</th><td>15.8</td></tr>\n",
+              "\t<tr><th scope=row>Ferrari Dino</th><td>19.7</td></tr>\n",
+              "\t<tr><th scope=row>Maserati Bora</th><td>15.0</td></tr>\n",
+              "\t<tr><th scope=row>Volvo 142E</th><td>21.4</td></tr>\n",
+              "</tbody>\n",
+              "</table>\n"
+            ],
+            "text/latex": [
+              "A data.frame: 32 × 1\n",
+              "\\begin{tabular}{r|l}\n",
+              "  & mpg\\\\\n",
+              "  & <dbl>\\\\\n",
+              "\\hline\n",
+              "\tMazda RX4 & 21.0\\\\\n",
+              "\tMazda RX4 Wag & 21.0\\\\\n",
+              "\tDatsun 710 & 22.8\\\\\n",
+              "\tHornet 4 Drive & 21.4\\\\\n",
+              "\tHornet Sportabout & 18.7\\\\\n",
+              "\tValiant & 18.1\\\\\n",
+              "\tDuster 360 & 14.3\\\\\n",
+              "\tMerc 240D & 24.4\\\\\n",
+              "\tMerc 230 & 22.8\\\\\n",
+              "\tMerc 280 & 19.2\\\\\n",
+              "\tMerc 280C & 17.8\\\\\n",
+              "\tMerc 450SE & 16.4\\\\\n",
+              "\tMerc 450SL & 17.3\\\\\n",
+              "\tMerc 450SLC & 15.2\\\\\n",
+              "\tCadillac Fleetwood & 10.4\\\\\n",
+              "\tLincoln Continental & 10.4\\\\\n",
+              "\tChrysler Imperial & 14.7\\\\\n",
+              "\tFiat 128 & 32.4\\\\\n",
+              "\tHonda Civic & 30.4\\\\\n",
+              "\tToyota Corolla & 33.9\\\\\n",
+              "\tToyota Corona & 21.5\\\\\n",
+              "\tDodge Challenger & 15.5\\\\\n",
+              "\tAMC Javelin & 15.2\\\\\n",
+              "\tCamaro Z28 & 13.3\\\\\n",
+              "\tPontiac Firebird & 19.2\\\\\n",
+              "\tFiat X1-9 & 27.3\\\\\n",
+              "\tPorsche 914-2 & 26.0\\\\\n",
+              "\tLotus Europa & 30.4\\\\\n",
+              "\tFord Pantera L & 15.8\\\\\n",
+              "\tFerrari Dino & 19.7\\\\\n",
+              "\tMaserati Bora & 15.0\\\\\n",
+              "\tVolvo 142E & 21.4\\\\\n",
+              "\\end{tabular}\n"
+            ],
+            "text/markdown": [
+              "\n",
+              "A data.frame: 32 × 1\n",
+              "\n",
+              "| <!--/--> | mpg &lt;dbl&gt; |\n",
+              "|---|---|\n",
+              "| Mazda RX4 | 21.0 |\n",
+              "| Mazda RX4 Wag | 21.0 |\n",
+              "| Datsun 710 | 22.8 |\n",
+              "| Hornet 4 Drive | 21.4 |\n",
+              "| Hornet Sportabout | 18.7 |\n",
+              "| Valiant | 18.1 |\n",
+              "| Duster 360 | 14.3 |\n",
+              "| Merc 240D | 24.4 |\n",
+              "| Merc 230 | 22.8 |\n",
+              "| Merc 280 | 19.2 |\n",
+              "| Merc 280C | 17.8 |\n",
+              "| Merc 450SE | 16.4 |\n",
+              "| Merc 450SL | 17.3 |\n",
+              "| Merc 450SLC | 15.2 |\n",
+              "| Cadillac Fleetwood | 10.4 |\n",
+              "| Lincoln Continental | 10.4 |\n",
+              "| Chrysler Imperial | 14.7 |\n",
+              "| Fiat 128 | 32.4 |\n",
+              "| Honda Civic | 30.4 |\n",
+              "| Toyota Corolla | 33.9 |\n",
+              "| Toyota Corona | 21.5 |\n",
+              "| Dodge Challenger | 15.5 |\n",
+              "| AMC Javelin | 15.2 |\n",
+              "| Camaro Z28 | 13.3 |\n",
+              "| Pontiac Firebird | 19.2 |\n",
+              "| Fiat X1-9 | 27.3 |\n",
+              "| Porsche 914-2 | 26.0 |\n",
+              "| Lotus Europa | 30.4 |\n",
+              "| Ford Pantera L | 15.8 |\n",
+              "| Ferrari Dino | 19.7 |\n",
+              "| Maserati Bora | 15.0 |\n",
+              "| Volvo 142E | 21.4 |\n",
+              "\n"
+            ],
+            "text/plain": [
+              "                    mpg \n",
+              "Mazda RX4           21.0\n",
+              "Mazda RX4 Wag       21.0\n",
+              "Datsun 710          22.8\n",
+              "Hornet 4 Drive      21.4\n",
+              "Hornet Sportabout   18.7\n",
+              "Valiant             18.1\n",
+              "Duster 360          14.3\n",
+              "Merc 240D           24.4\n",
+              "Merc 230            22.8\n",
+              "Merc 280            19.2\n",
+              "Merc 280C           17.8\n",
+              "Merc 450SE          16.4\n",
+              "Merc 450SL          17.3\n",
+              "Merc 450SLC         15.2\n",
+              "Cadillac Fleetwood  10.4\n",
+              "Lincoln Continental 10.4\n",
+              "Chrysler Imperial   14.7\n",
+              "Fiat 128            32.4\n",
+              "Honda Civic         30.4\n",
+              "Toyota Corolla      33.9\n",
+              "Toyota Corona       21.5\n",
+              "Dodge Challenger    15.5\n",
+              "AMC Javelin         15.2\n",
+              "Camaro Z28          13.3\n",
+              "Pontiac Firebird    19.2\n",
+              "Fiat X1-9           27.3\n",
+              "Porsche 914-2       26.0\n",
+              "Lotus Europa        30.4\n",
+              "Ford Pantera L      15.8\n",
+              "Ferrari Dino        19.7\n",
+              "Maserati Bora       15.0\n",
+              "Volvo 142E          21.4"
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "26kM6xYe44mz",
+        "outputId": "009ee27c-f84b-40cf-b8b1-24199f21a3f1"
+      },
+      "source": [
+        "mtcars[c(\"mpg\", \"hp\")]"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "<table>\n",
+              "<caption>A data.frame: 32 × 2</caption>\n",
+              "<thead>\n",
+              "\t<tr><th></th><th scope=col>mpg</th><th scope=col>hp</th></tr>\n",
+              "\t<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>\n",
+              "</thead>\n",
+              "<tbody>\n",
+              "\t<tr><th scope=row>Mazda RX4</th><td>21.0</td><td>110</td></tr>\n",
+              "\t<tr><th scope=row>Mazda RX4 Wag</th><td>21.0</td><td>110</td></tr>\n",
+              "\t<tr><th scope=row>Datsun 710</th><td>22.8</td><td> 93</td></tr>\n",
+              "\t<tr><th scope=row>Hornet 4 Drive</th><td>21.4</td><td>110</td></tr>\n",
+              "\t<tr><th scope=row>Hornet Sportabout</th><td>18.7</td><td>175</td></tr>\n",
+              "\t<tr><th scope=row>Valiant</th><td>18.1</td><td>105</td></tr>\n",
+              "\t<tr><th scope=row>Duster 360</th><td>14.3</td><td>245</td></tr>\n",
+              "\t<tr><th scope=row>Merc 240D</th><td>24.4</td><td> 62</td></tr>\n",
+              "\t<tr><th scope=row>Merc 230</th><td>22.8</td><td> 95</td></tr>\n",
+              "\t<tr><th scope=row>Merc 280</th><td>19.2</td><td>123</td></tr>\n",
+              "\t<tr><th scope=row>Merc 280C</th><td>17.8</td><td>123</td></tr>\n",
+              "\t<tr><th scope=row>Merc 450SE</th><td>16.4</td><td>180</td></tr>\n",
+              "\t<tr><th scope=row>Merc 450SL</th><td>17.3</td><td>180</td></tr>\n",
+              "\t<tr><th scope=row>Merc 450SLC</th><td>15.2</td><td>180</td></tr>\n",
+              "\t<tr><th scope=row>Cadillac Fleetwood</th><td>10.4</td><td>205</td></tr>\n",
+              "\t<tr><th scope=row>Lincoln Continental</th><td>10.4</td><td>215</td></tr>\n",
+              "\t<tr><th scope=row>Chrysler Imperial</th><td>14.7</td><td>230</td></tr>\n",
+              "\t<tr><th scope=row>Fiat 128</th><td>32.4</td><td> 66</td></tr>\n",
+              "\t<tr><th scope=row>Honda Civic</th><td>30.4</td><td> 52</td></tr>\n",
+              "\t<tr><th scope=row>Toyota Corolla</th><td>33.9</td><td> 65</td></tr>\n",
+              "\t<tr><th scope=row>Toyota Corona</th><td>21.5</td><td> 97</td></tr>\n",
+              "\t<tr><th scope=row>Dodge Challenger</th><td>15.5</td><td>150</td></tr>\n",
+              "\t<tr><th scope=row>AMC Javelin</th><td>15.2</td><td>150</td></tr>\n",
+              "\t<tr><th scope=row>Camaro Z28</th><td>13.3</td><td>245</td></tr>\n",
+              "\t<tr><th scope=row>Pontiac Firebird</th><td>19.2</td><td>175</td></tr>\n",
+              "\t<tr><th scope=row>Fiat X1-9</th><td>27.3</td><td> 66</td></tr>\n",
+              "\t<tr><th scope=row>Porsche 914-2</th><td>26.0</td><td> 91</td></tr>\n",
+              "\t<tr><th scope=row>Lotus Europa</th><td>30.4</td><td>113</td></tr>\n",
+              "\t<tr><th scope=row>Ford Pantera L</th><td>15.8</td><td>264</td></tr>\n",
+              "\t<tr><th scope=row>Ferrari Dino</th><td>19.7</td><td>175</td></tr>\n",
+              "\t<tr><th scope=row>Maserati Bora</th><td>15.0</td><td>335</td></tr>\n",
+              "\t<tr><th scope=row>Volvo 142E</th><td>21.4</td><td>109</td></tr>\n",
+              "</tbody>\n",
+              "</table>\n"
+            ],
+            "text/latex": [
+              "A data.frame: 32 × 2\n",
+              "\\begin{tabular}{r|ll}\n",
+              "  & mpg & hp\\\\\n",
+              "  & <dbl> & <dbl>\\\\\n",
+              "\\hline\n",
+              "\tMazda RX4 & 21.0 & 110\\\\\n",
+              "\tMazda RX4 Wag & 21.0 & 110\\\\\n",
+              "\tDatsun 710 & 22.8 &  93\\\\\n",
+              "\tHornet 4 Drive & 21.4 & 110\\\\\n",
+              "\tHornet Sportabout & 18.7 & 175\\\\\n",
+              "\tValiant & 18.1 & 105\\\\\n",
+              "\tDuster 360 & 14.3 & 245\\\\\n",
+              "\tMerc 240D & 24.4 &  62\\\\\n",
+              "\tMerc 230 & 22.8 &  95\\\\\n",
+              "\tMerc 280 & 19.2 & 123\\\\\n",
+              "\tMerc 280C & 17.8 & 123\\\\\n",
+              "\tMerc 450SE & 16.4 & 180\\\\\n",
+              "\tMerc 450SL & 17.3 & 180\\\\\n",
+              "\tMerc 450SLC & 15.2 & 180\\\\\n",
+              "\tCadillac Fleetwood & 10.4 & 205\\\\\n",
+              "\tLincoln Continental & 10.4 & 215\\\\\n",
+              "\tChrysler Imperial & 14.7 & 230\\\\\n",
+              "\tFiat 128 & 32.4 &  66\\\\\n",
+              "\tHonda Civic & 30.4 &  52\\\\\n",
+              "\tToyota Corolla & 33.9 &  65\\\\\n",
+              "\tToyota Corona & 21.5 &  97\\\\\n",
+              "\tDodge Challenger & 15.5 & 150\\\\\n",
+              "\tAMC Javelin & 15.2 & 150\\\\\n",
+              "\tCamaro Z28 & 13.3 & 245\\\\\n",
+              "\tPontiac Firebird & 19.2 & 175\\\\\n",
+              "\tFiat X1-9 & 27.3 &  66\\\\\n",
+              "\tPorsche 914-2 & 26.0 &  91\\\\\n",
+              "\tLotus Europa & 30.4 & 113\\\\\n",
+              "\tFord Pantera L & 15.8 & 264\\\\\n",
+              "\tFerrari Dino & 19.7 & 175\\\\\n",
+              "\tMaserati Bora & 15.0 & 335\\\\\n",
+              "\tVolvo 142E & 21.4 & 109\\\\\n",
+              "\\end{tabular}\n"
+            ],
+            "text/markdown": [
+              "\n",
+              "A data.frame: 32 × 2\n",
+              "\n",
+              "| <!--/--> | mpg &lt;dbl&gt; | hp &lt;dbl&gt; |\n",
+              "|---|---|---|\n",
+              "| Mazda RX4 | 21.0 | 110 |\n",
+              "| Mazda RX4 Wag | 21.0 | 110 |\n",
+              "| Datsun 710 | 22.8 |  93 |\n",
+              "| Hornet 4 Drive | 21.4 | 110 |\n",
+              "| Hornet Sportabout | 18.7 | 175 |\n",
+              "| Valiant | 18.1 | 105 |\n",
+              "| Duster 360 | 14.3 | 245 |\n",
+              "| Merc 240D | 24.4 |  62 |\n",
+              "| Merc 230 | 22.8 |  95 |\n",
+              "| Merc 280 | 19.2 | 123 |\n",
+              "| Merc 280C | 17.8 | 123 |\n",
+              "| Merc 450SE | 16.4 | 180 |\n",
+              "| Merc 450SL | 17.3 | 180 |\n",
+              "| Merc 450SLC | 15.2 | 180 |\n",
+              "| Cadillac Fleetwood | 10.4 | 205 |\n",
+              "| Lincoln Continental | 10.4 | 215 |\n",
+              "| Chrysler Imperial | 14.7 | 230 |\n",
+              "| Fiat 128 | 32.4 |  66 |\n",
+              "| Honda Civic | 30.4 |  52 |\n",
+              "| Toyota Corolla | 33.9 |  65 |\n",
+              "| Toyota Corona | 21.5 |  97 |\n",
+              "| Dodge Challenger | 15.5 | 150 |\n",
+              "| AMC Javelin | 15.2 | 150 |\n",
+              "| Camaro Z28 | 13.3 | 245 |\n",
+              "| Pontiac Firebird | 19.2 | 175 |\n",
+              "| Fiat X1-9 | 27.3 |  66 |\n",
+              "| Porsche 914-2 | 26.0 |  91 |\n",
+              "| Lotus Europa | 30.4 | 113 |\n",
+              "| Ford Pantera L | 15.8 | 264 |\n",
+              "| Ferrari Dino | 19.7 | 175 |\n",
+              "| Maserati Bora | 15.0 | 335 |\n",
+              "| Volvo 142E | 21.4 | 109 |\n",
+              "\n"
+            ],
+            "text/plain": [
+              "                    mpg  hp \n",
+              "Mazda RX4           21.0 110\n",
+              "Mazda RX4 Wag       21.0 110\n",
+              "Datsun 710          22.8  93\n",
+              "Hornet 4 Drive      21.4 110\n",
+              "Hornet Sportabout   18.7 175\n",
+              "Valiant             18.1 105\n",
+              "Duster 360          14.3 245\n",
+              "Merc 240D           24.4  62\n",
+              "Merc 230            22.8  95\n",
+              "Merc 280            19.2 123\n",
+              "Merc 280C           17.8 123\n",
+              "Merc 450SE          16.4 180\n",
+              "Merc 450SL          17.3 180\n",
+              "Merc 450SLC         15.2 180\n",
+              "Cadillac Fleetwood  10.4 205\n",
+              "Lincoln Continental 10.4 215\n",
+              "Chrysler Imperial   14.7 230\n",
+              "Fiat 128            32.4  66\n",
+              "Honda Civic         30.4  52\n",
+              "Toyota Corolla      33.9  65\n",
+              "Toyota Corona       21.5  97\n",
+              "Dodge Challenger    15.5 150\n",
+              "AMC Javelin         15.2 150\n",
+              "Camaro Z28          13.3 245\n",
+              "Pontiac Firebird    19.2 175\n",
+              "Fiat X1-9           27.3  66\n",
+              "Porsche 914-2       26.0  91\n",
+              "Lotus Europa        30.4 113\n",
+              "Ford Pantera L      15.8 264\n",
+              "Ferrari Dino        19.7 175\n",
+              "Maserati Bora       15.0 335\n",
+              "Volvo 142E          21.4 109"
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "CCfepj6444m0",
+        "outputId": "d66acff9-b881-4c51-c02d-dbfa27470798"
+      },
+      "source": [
+        "mtcars[6, 4]"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "105"
+            ],
+            "text/latex": [
+              "105"
+            ],
+            "text/markdown": [
+              "105"
+            ],
+            "text/plain": [
+              "[1] 105"
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "yDoRyjHe44m2",
+        "outputId": "6f6c72de-83a1-4264-8321-f34fc00b6206"
+      },
+      "source": [
+        "mtcars[\"Valiant\", 4]"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "105"
+            ],
+            "text/latex": [
+              "105"
+            ],
+            "text/markdown": [
+              "105"
+            ],
+            "text/plain": [
+              "[1] 105"
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "psg9AgTJ44m3",
+        "outputId": "b1f735ba-7091-4b80-8e5d-dfd907b5da09"
+      },
+      "source": [
+        "mtcars[\"Valiant\", \"hp\"]"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "105"
+            ],
+            "text/latex": [
+              "105"
+            ],
+            "text/markdown": [
+              "105"
+            ],
+            "text/plain": [
+              "[1] 105"
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "tDMGdmQI44m4",
+        "outputId": "7cc016b4-49e2-4616-e732-2013ca9a75a0"
+      },
+      "source": [
+        "mtcars[6, \"hp\"]"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "105"
+            ],
+            "text/latex": [
+              "105"
+            ],
+            "text/markdown": [
+              "105"
+            ],
+            "text/plain": [
+              "[1] 105"
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "3JseeZiY44m8"
+      },
+      "source": [
+        "También, puedo seleccionar más de elemento si lo necesito..."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "uFgnq93744m9",
+        "outputId": "c4357f6b-3d9f-4ba0-9b38-77d09d8d39f3"
+      },
+      "source": [
+        "mtcars[5:10, c(\"mpg\", \"gear\")]"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "<table>\n",
+              "<caption>A data.frame: 6 × 2</caption>\n",
+              "<thead>\n",
+              "\t<tr><th></th><th scope=col>mpg</th><th scope=col>gear</th></tr>\n",
+              "\t<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>\n",
+              "</thead>\n",
+              "<tbody>\n",
+              "\t<tr><th scope=row>Hornet Sportabout</th><td>18.7</td><td>3</td></tr>\n",
+              "\t<tr><th scope=row>Valiant</th><td>18.1</td><td>3</td></tr>\n",
+              "\t<tr><th scope=row>Duster 360</th><td>14.3</td><td>3</td></tr>\n",
+              "\t<tr><th scope=row>Merc 240D</th><td>24.4</td><td>4</td></tr>\n",
+              "\t<tr><th scope=row>Merc 230</th><td>22.8</td><td>4</td></tr>\n",
+              "\t<tr><th scope=row>Merc 280</th><td>19.2</td><td>4</td></tr>\n",
+              "</tbody>\n",
+              "</table>\n"
+            ],
+            "text/latex": [
+              "A data.frame: 6 × 2\n",
+              "\\begin{tabular}{r|ll}\n",
+              "  & mpg & gear\\\\\n",
+              "  & <dbl> & <dbl>\\\\\n",
+              "\\hline\n",
+              "\tHornet Sportabout & 18.7 & 3\\\\\n",
+              "\tValiant & 18.1 & 3\\\\\n",
+              "\tDuster 360 & 14.3 & 3\\\\\n",
+              "\tMerc 240D & 24.4 & 4\\\\\n",
+              "\tMerc 230 & 22.8 & 4\\\\\n",
+              "\tMerc 280 & 19.2 & 4\\\\\n",
+              "\\end{tabular}\n"
+            ],
+            "text/markdown": [
+              "\n",
+              "A data.frame: 6 × 2\n",
+              "\n",
+              "| <!--/--> | mpg &lt;dbl&gt; | gear &lt;dbl&gt; |\n",
+              "|---|---|---|\n",
+              "| Hornet Sportabout | 18.7 | 3 |\n",
+              "| Valiant | 18.1 | 3 |\n",
+              "| Duster 360 | 14.3 | 3 |\n",
+              "| Merc 240D | 24.4 | 4 |\n",
+              "| Merc 230 | 22.8 | 4 |\n",
+              "| Merc 280 | 19.2 | 4 |\n",
+              "\n"
+            ],
+            "text/plain": [
+              "                  mpg  gear\n",
+              "Hornet Sportabout 18.7 3   \n",
+              "Valiant           18.1 3   \n",
+              "Duster 360        14.3 3   \n",
+              "Merc 240D         24.4 4   \n",
+              "Merc 230          22.8 4   \n",
+              "Merc 280          19.2 4   "
+            ]
+          },
+          "metadata": {},
+          "output_type": "display_data"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "sQSoiEd_44m-"
+      },
+      "source": [
+        "Y claro, si tengo duda sobre alguna función, también puedo usar mi signo de interrogración para ver la documentación...aunque en el caso de R, este va _antes_ de la función."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "1Kbp_P4X44m_"
+      },
+      "source": [
+        "?head"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "DA_9HHfJ44nA"
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
